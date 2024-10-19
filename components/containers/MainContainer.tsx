@@ -1,9 +1,10 @@
 import React from "react";
-import { ScrollView, StyleSheet, SafeAreaView } from "react-native";
+import { ScrollView, StyleSheet, SafeAreaView, Platform } from "react-native";
 import { ThemedView } from "../ThemedView";
 import { PropsWithChildren } from "react";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { Colors } from "@/constants/Colors";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export function MainContainer({ children }: PropsWithChildren) {
   const bgColor = useThemeColor(
@@ -12,12 +13,26 @@ export function MainContainer({ children }: PropsWithChildren) {
   );
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: bgColor }]}>
-      <ScrollView
-        contentContainerStyle={styles.scrollViewContent}
-        contentInset={{ top: 20 }} // Adding space to the top
+      <KeyboardAwareScrollView
+        style={{ flex: 1 }}
+        contentContainerStyle={{ flexGrow: 1 }}
+        showsVerticalScrollIndicator={false}
+        enableOnAndroid={true}
+        extraScrollHeight={Platform.OS === "ios" ? -25 : 20} // More space for iOS to avoid overlap
+        keyboardShouldPersistTaps="handled"
+        scrollEnabled={true}
+        enableAutomaticScroll={Platform.OS === "ios"} // Ensures smooth auto-scroll on iOS
+        enableResetScrollToCoords={false} // Prevents jumpy behavior on iOS
       >
-        <ThemedView style={styles.container}>{children}</ThemedView>
-      </ScrollView>
+        <ScrollView
+          contentContainerStyle={styles.scrollViewContent}
+          contentInset={{ top: 20 }}
+          showsVerticalScrollIndicator={false} // Hides the vertical scroll indicator
+          showsHorizontalScrollIndicator={false} // Hides the horizontal scroll indicator (optional)
+        >
+          <ThemedView style={styles.container}>{children}</ThemedView>
+        </ScrollView>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 }

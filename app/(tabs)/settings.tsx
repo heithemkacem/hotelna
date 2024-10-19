@@ -1,16 +1,14 @@
 import { StyleSheet } from "react-native";
-
-import { ThemedText } from "@/components/ThemedText";
-import { ThemedView } from "@/components/ThemedView";
 import { MainContainer } from "@/components/containers/MainContainer";
+import Title from "@/components/headers/Title";
 
 export default function TabFourScreen() {
   return (
     <MainContainer>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Setting</ThemedText>
-      </ThemedView>
-      <ThemedText>Here you can configuire you profile and settings</ThemedText>
+      <Title
+        header="Login to join your hotel"
+        text="Login to see all the services provided by your hotel."
+      />
     </MainContainer>
   );
 }
