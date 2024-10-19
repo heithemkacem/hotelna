@@ -1,15 +1,16 @@
 import { StyleSheet } from "react-native";
+
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { MainContainer } from "@/components/containers/MainContainer";
 
-export default function TabTwoScreen() {
+export default function TabFourScreen() {
   return (
     <MainContainer>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Explore</ThemedText>
+        <ThemedText type="title">Setting</ThemedText>
       </ThemedView>
-      <ThemedText>See all the services provided by your hotel.</ThemedText>
+      <ThemedText>Here you can configuire you profile and settings</ThemedText>
     </MainContainer>
   );
 }
@@ -17,5 +18,6 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: "row",
+    gap: 8,
   },
 });
