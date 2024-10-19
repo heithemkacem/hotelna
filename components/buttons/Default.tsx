@@ -40,7 +40,14 @@ const DefaultButton: React.FC<DefaultButtonProps> = ({
       {isSubmitting ? (
         <Loader color="white" size={size} />
       ) : (
-        <ThemedText style={styles.buttonText}>{title}</ThemedText>
+        <ThemedText
+          style={[
+            styles.buttonText,
+            { color: Colors[colorScheme ?? "dark"].white },
+          ]}
+        >
+          {title}
+        </ThemedText>
       )}
     </TouchableOpacity>
   );

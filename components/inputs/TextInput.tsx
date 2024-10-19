@@ -87,8 +87,6 @@ const TextInput: React.FC<TextInputProps> = ({
         style={[
           styles.textInput,
           { backgroundColor: Colors[colorScheme ?? "dark"].inputBG },
-
-          Platform.OS === "ios" && styles.textInputIOS,
           inputBorderColor(),
         ]}
         placeholder={placeholder}
@@ -126,9 +124,9 @@ const TextInput: React.FC<TextInputProps> = ({
           style={styles.passwordToggle}
         >
           {hidePassword ? (
-            <IoniconsIcon name="eye" size={16} />
-          ) : (
             <IoniconsIcon name="eye-off" size={16} />
+          ) : (
+            <IoniconsIcon name="eye" size={16} />
           )}
         </Pressable>
       )}
@@ -146,10 +144,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 8,
     fontSize: 12,
-  },
-  textInputIOS: {
     height: 50,
   },
+
   borderDefault: {
     borderWidth: 1,
   },

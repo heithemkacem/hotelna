@@ -17,7 +17,10 @@ const AuthContainer = ({ title }: TitleProps) => {
           { backgroundColor: Colors[colorScheme ?? "dark"].link },
         ]}
       >
-        <ThemedText style={styles.title} type="subtitle">
+        <ThemedText
+          style={[styles.title, { color: Colors[colorScheme ?? "dark"].white }]}
+          type="subtitle"
+        >
           {title}
         </ThemedText>
       </ThemedView>
