@@ -40,8 +40,8 @@ const CheckBox: React.FC<CheckBoxtProps> = ({
 
 const styles = StyleSheet.create({
   checkBox: {
-    width: 20,
-    height: 20,
+    width: 22,
+    height: 22,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 5,

@@ -2,16 +2,20 @@ import React from "react";
 import { ThemedView } from "../ThemedView";
 import { ThemedText } from "../ThemedText";
 import { Pressable, StyleSheet } from "react-native";
-import { Link } from "expo-router";
-
-const TextWithLink = () => {
+import { Href, Link } from "expo-router";
+type TextWithLinkProp = {
+  link: string;
+  text: string;
+  href: Href<string | object>;
+};
+const TextWithLink = ({ text, link, href }: TextWithLinkProp) => {
   return (
     <ThemedView style={styles.signupContainer}>
-      <ThemedText>Don't have an account ?</ThemedText>
-      <Link href="/sign-up" asChild>
+      <ThemedText>{text}</ThemedText>
+      <Link href={href} asChild>
         <Pressable>
           <ThemedText style={{ marginLeft: 5 }} type="link">
-            Sign Up
+            {link}
           </ThemedText>
         </Pressable>
       </Link>

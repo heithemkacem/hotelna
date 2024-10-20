@@ -45,6 +45,7 @@ const DefaultButton: React.FC<DefaultButtonProps> = ({
             styles.buttonText,
             { color: Colors[colorScheme ?? "dark"].white },
           ]}
+          type="meduim"
         >
           {title}
         </ThemedText>
@@ -66,7 +67,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#dcdcdc", // Replace with your input placeholder color
   },
   buttonText: {
-    fontSize: 14,
     fontWeight: "bold",
   },
 });

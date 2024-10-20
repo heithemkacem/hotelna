@@ -11,7 +11,10 @@ export type ThemedTextProps = TextProps & {
     | "defaultSemiBold"
     | "subtitle"
     | "link"
-    | "small";
+    | "small"
+    | "large"
+    | "meduim"
+    | "xl";
 };
 
 export function ThemedText({
@@ -35,6 +38,9 @@ export function ThemedText({
         type === "defaultSemiBold" ? styles.defaultSemiBold : undefined,
         type === "subtitle" ? styles.subtitle : undefined,
         type === "small" ? styles.small : undefined,
+        type === "meduim" ? styles.meduim : undefined,
+        type === "large" ? styles.large : undefined,
+        type === "xl" ? styles.xl : undefined,
         type === "link" ? [styles.link, { color: colorForLink }] : undefined,
         style,
       ]}
@@ -71,5 +77,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 12,
     fontWeight: "bold",
+  },
+  meduim: {
+    fontSize: 14,
+  },
+  large: {
+    fontSize: 16,
+  },
+  xl: {
+    fontSize: 28,
   },
 });

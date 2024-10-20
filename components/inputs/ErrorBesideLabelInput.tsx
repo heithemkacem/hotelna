@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   TextInput as RNTextInput,
   Pressable,
-  Platform,
   StyleSheet,
   useColorScheme,
 } from "react-native";
@@ -24,7 +23,7 @@ interface TextInputProps {
   disabled?: boolean;
 }
 
-const TextInput: React.FC<TextInputProps> = ({
+const ErrorBesideLabelInput: React.FC<TextInputProps> = ({
   label,
   isPassword,
   error,
@@ -77,7 +76,28 @@ const TextInput: React.FC<TextInputProps> = ({
 
   return (
     <ThemedView style={styles.container}>
-      {label && <ThemedText type="small">{label}</ThemedText>}
+      <ThemedView style={styles.errorContainer}>
+        {label && <ThemedText type="small">{label}</ThemedText>}
+        {error && (
+          <ThemedView style={styles.errorContainer}>
+            <ThemedText
+              style={[
+                styles.errorText,
+                { color: Colors[colorScheme ?? "dark"].error },
+              ]}
+              type="small"
+            >
+              {error}
+            </ThemedText>
+            <MaterialIcon
+              name="error"
+              size={13}
+              color={Colors[colorScheme ?? "dark"].error}
+            />
+          </ThemedView>
+        )}
+      </ThemedView>
+
       <RNTextInput
         style={[
           styles.textInput,
@@ -96,21 +116,7 @@ const TextInput: React.FC<TextInputProps> = ({
         onBlur={handleBlur}
         editable={editable}
       />
-      {error && (
-        <ThemedView style={[styles.errorContainer, { marginTop: 10 }]}>
-          <ThemedText
-            type="small"
-            style={[{ color: Colors[colorScheme ?? "dark"].error }]}
-          >
-            {error}
-          </ThemedText>
-          <MaterialIcon
-            name="error"
-            size={13}
-            color={Colors[colorScheme ?? "dark"].error}
-          />
-        </ThemedView>
-      )}
+
       {isPassword && (
         <Pressable
           onPress={() => setHidePassword(!hidePassword)}
@@ -155,7 +161,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-
+  errorText: {
+    marginRight: 5,
+  },
   passwordToggle: {
     position: "absolute",
     top: 32,
@@ -166,4 +174,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TextInput;
+export default ErrorBesideLabelInput;

@@ -63,7 +63,11 @@ export default function SignInScreen() {
                 isPassword={true}
                 error={touched.password && errors.password}
               />
-              <CheckBoxWithLink />
+              <CheckBoxWithLink
+                text="Remember Me"
+                link="Forgot Password?"
+                href={"/(auth)/forget-password"}
+              />
               <DefaultButton
                 size="large"
                 isSubmitting={false}
@@ -71,7 +75,11 @@ export default function SignInScreen() {
                 title="Login"
               />
               <SocialMediaLinks />
-              <TextWithLink />
+              <TextWithLink
+                text="Don't have an account ?"
+                link="Sign Up"
+                href={"/(auth)/sign-up"}
+              />
             </ThemedView>
           )}
         </Formik>

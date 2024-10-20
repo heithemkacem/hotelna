@@ -21,6 +21,10 @@ export const Colors = {
     inputPH: "rgba(0, 0, 0, 0.48)",
     inputBG: "rgba(0, 0, 0, 0.02)",
     inputBorder: "rgba(0, 0, 0, 0.08)",
+    yellow: "#FFA500",
+    green: "#00873C",
+    red: "#F65C3B",
+    orange: "#FD8551",
   },
   dark: {
     text: "#ECEDEE",
@@ -36,5 +40,9 @@ export const Colors = {
     inputPH: "rgba(0, 0, 0, 0.48)",
     inputBG: "rgba(255, 255, 255, 0.2)",
     inputBorder: "rgba(255, 255, 255, 0.5)",
+    yellow: "#FFA500",
+    green: "#00873C",
+    red: "#F65C3B",
+    orange: "#FD8551",
   },
 };

@@ -14,12 +14,12 @@ const AuthContainer = ({ title }: TitleProps) => {
       <ThemedView
         style={[
           styles.titleContainer,
-          { backgroundColor: Colors[colorScheme ?? "dark"].link },
+          { backgroundColor: Colors[colorScheme ?? "dark"].primary },
         ]}
       >
         <ThemedText
           style={[styles.title, { color: Colors[colorScheme ?? "dark"].white }]}
-          type="subtitle"
+          type="meduim"
         >
           {title}
         </ThemedText>
@@ -43,6 +43,6 @@ const styles = StyleSheet.create({
   },
   title: {
     top: -17.5,
-    fontSize: 14,
+    fontWeight: "bold",
   },
 });

@@ -2,10 +2,14 @@ import React, { useCallback, useState } from "react";
 import { ThemedView } from "../ThemedView";
 import CheckBox from "../inputs/CheckBox";
 import { ThemedText } from "../ThemedText";
-import { Link } from "expo-router";
+import { Href, Link } from "expo-router";
 import { Pressable, StyleSheet } from "react-native";
-
-const CheckBoxWithLink = () => {
+type CheckBoxWithLinkProp = {
+  link?: string;
+  text: string;
+  href?: Href<string | object>;
+};
+const CheckBoxWithLink = ({ link, text, href }: CheckBoxWithLinkProp) => {
   const [checked, setChecked] = useState<boolean>(false);
 
   const handleCheckbox = useCallback(() => {
@@ -16,14 +20,18 @@ const CheckBoxWithLink = () => {
       <ThemedView style={styles.checkboxContainer}>
         <CheckBox checked={checked} setChecked={handleCheckbox} />
         <Pressable>
-          <ThemedText style={styles.rememberMeText}>Remember Me</ThemedText>
+          <ThemedText style={styles.rememberMeText} type="meduim">
+            {text}
+          </ThemedText>
         </Pressable>
       </ThemedView>
-      <Link href="/forget-password" asChild>
-        <Pressable>
-          <ThemedText type="link">Forgot Password?</ThemedText>
-        </Pressable>
-      </Link>
+      {link && href && (
+        <Link href={href} asChild>
+          <Pressable>
+            <ThemedText type="link">{link}</ThemedText>
+          </Pressable>
+        </Link>
+      )}
     </ThemedView>
   );
 };
@@ -42,5 +50,6 @@ const styles = StyleSheet.create({
   },
   rememberMeText: {
     marginLeft: 8,
+    fontWeight: "bold",
   },
 });
