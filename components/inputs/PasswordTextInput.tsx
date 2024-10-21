@@ -88,7 +88,7 @@ const PasswordTextInput: React.FC<TextInputProps> = ({
             type="small"
             style={{ color: Colors[colorScheme ?? "dark"].yellow }}
           >
-            Goog
+            Good
           </ThemedText>
         );
       case 4:

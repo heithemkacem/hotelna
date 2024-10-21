@@ -80,11 +80,6 @@ export default function SignInScreen() {
                 link="Sign Up"
                 href={"/(auth)/sign-up"}
               />
-              <TextWithLink
-                text="Don't have an account ?"
-                link="Sign Up"
-                href={"/(auth)/reset-password"}
-              />
             </ThemedView>
           )}
         </Formik>
