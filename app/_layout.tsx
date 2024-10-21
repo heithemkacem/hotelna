@@ -4,22 +4,19 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { SessionProvider } from "@/context/ctx";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-
-  const isConnected = true;
-
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -35,42 +32,9 @@ export default function RootLayout() {
   }
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      {isConnected ? <ConnectedUserStack /> : <NotConnectedUserStack />}
+      <SessionProvider>
+        <Slot />
+      </SessionProvider>
     </ThemeProvider>
-  );
-}
-
-function ConnectedUserStack() {
-  const colorScheme = useColorScheme();
-
-  return (
-    <Stack
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: Colors[colorScheme ?? "dark"].background,
-        },
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="(tabs)" />
-      <Stack.Screen name="+not-found" />
-    </Stack>
-  );
-}
-
-function NotConnectedUserStack() {
-  const colorScheme = useColorScheme();
-  return (
-    <Stack
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: Colors[colorScheme ?? "dark"].background,
-        },
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="(auth)" />
-      <Stack.Screen name="+not-found" />
-    </Stack>
   );
 }

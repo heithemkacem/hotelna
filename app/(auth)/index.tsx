@@ -11,8 +11,11 @@ import ParallaxScrollView from "@/components/ParallaxScrollView";
 import SocialMediaLinks from "@/components/common/SocialMediaLinks";
 import CheckBoxWithLink from "@/components/common/CheckBoxWithLink";
 import TextWithLink from "@/components/common/TextWithLink";
+import { useSession } from "@/context/ctx";
+import { router } from "expo-router";
 
 export default function SignInScreen() {
+  const { signIn } = useSession();
   const initialValues = useMemo(
     () => ({
       email: "",
@@ -43,8 +46,11 @@ export default function SignInScreen() {
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting }) => {
             console.log(values);
+            signIn();
+            setSubmitting(false);
+            router.replace("/(tabs)/");
           }}
-          validationSchema={LoginSchema}
+          //validationSchema={LoginSchema}
         >
           {({ handleChange, handleSubmit, values, errors, touched }) => (
             <ThemedView style={{ top: -100 }}>

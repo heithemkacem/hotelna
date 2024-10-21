@@ -1,12 +1,14 @@
-import { Image, StyleSheet, Platform } from "react-native";
+import { Image, StyleSheet, Platform, Pressable } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { MainContainer } from "@/components/containers/MainContainer";
+import { useSession } from "@/context/ctx";
 
 export default function HomeScreen() {
+  const { signOut } = useSession();
   return (
     <MainContainer>
       <ParallaxScrollView
@@ -25,6 +27,9 @@ export default function HomeScreen() {
           <ThemedText type="title">Welcome !</ThemedText>
           <HelloWave />
         </ThemedView>
+        <Pressable onPress={() => signOut()} style={styles.titleContainer}>
+          <ThemedText type="title">Sign out !</ThemedText>
+        </Pressable>
       </ParallaxScrollView>
     </MainContainer>
   );
