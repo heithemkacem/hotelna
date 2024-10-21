@@ -1,6 +1,7 @@
 import React from "react";
 import { ActivityIndicator, Dimensions, StyleSheet } from "react-native";
 import { ThemedView } from "../ThemedView";
+import { Colors } from "@/constants/Colors";
 
 export interface DefaultButtonColorProps {
   color?: string;
@@ -8,7 +9,7 @@ export interface DefaultButtonColorProps {
 }
 
 const Loader: React.FC<DefaultButtonColorProps> = ({
-  color = "#31CF77",
+  color = Colors.dark.primary,
   size = "large",
 }) => {
   const height = Dimensions.get("window").height;

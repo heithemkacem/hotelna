@@ -18,7 +18,7 @@ export function MainContainer({ children }: PropsWithChildren) {
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
         enableOnAndroid={true}
-        extraScrollHeight={Platform.OS === "ios" ? -25 : 20} // More space for iOS to avoid overlap
+        extraScrollHeight={Platform.OS === "ios" ? 40 : 20} // More space for iOS to avoid overlap
         keyboardShouldPersistTaps="handled"
         scrollEnabled={true}
         enableAutomaticScroll={Platform.OS === "ios"} // Ensures smooth auto-scroll on iOS

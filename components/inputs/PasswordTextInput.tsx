@@ -15,7 +15,6 @@ import { ThemedView } from "../ThemedView";
 interface TextInputProps {
   label?: string;
   error?: any;
-  placeholderTextColor?: string;
   value?: string;
   onChangeText?: (text: string) => void;
   placeholder: string;
@@ -27,7 +26,6 @@ const PasswordTextInput: React.FC<TextInputProps> = ({
   label,
   isPassword,
   error,
-  placeholderTextColor = "rgba(0, 0, 0, 0.8)",
   value,
   placeholder,
   onChangeText,
@@ -156,7 +154,7 @@ const PasswordTextInput: React.FC<TextInputProps> = ({
           inputBorderColor(),
         ]}
         placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
+        placeholderTextColor={Colors[colorScheme ?? "dark"].inputPH}
         secureTextEntry={isPassword && hidePassword}
         value={value}
         onChangeText={handlePasswordChange}

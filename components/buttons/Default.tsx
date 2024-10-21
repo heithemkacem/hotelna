@@ -31,7 +31,9 @@ const DefaultButton: React.FC<DefaultButtonProps> = ({
   const buttonStyle: ViewStyle[] = [
     styles.button,
     { backgroundColor: Colors[colorScheme ?? "dark"].primary },
-    disabled ? styles.disabled : { backgroundColor: color }, // Use color prop when not disabled
+    disabled
+      ? { backgroundColor: Colors[colorScheme ?? "dark"].disabled }
+      : { backgroundColor: color }, // Use color prop when not disabled
     style, // Custom style from props
   ];
 
@@ -63,9 +65,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 12, // mt-3 equivalent
   },
-  disabled: {
-    backgroundColor: "#dcdcdc", // Replace with your input placeholder color
-  },
+
   buttonText: {
     fontWeight: "bold",
   },

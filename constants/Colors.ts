@@ -8,6 +8,7 @@ const tintColorDark = "#D398F9";
 
 export const Colors = {
   light: {
+    disabled: "rgba(0, 0, 0, 0.2)",
     text: "#2C193A",
     link: "#AB6AEC",
     background: "#ECEDEE",
@@ -27,6 +28,7 @@ export const Colors = {
     orange: "#FD8551",
   },
   dark: {
+    disabled: "rgba(255, 255, 255, 0.05)",
     text: "#ECEDEE",
     background: "#2C193A",
     link: "#AB6AEC",
@@ -37,7 +39,7 @@ export const Colors = {
     error: "#FD515F",
     white: "#ECEDEE",
     primary: "#AB6AEC",
-    inputPH: "rgba(0, 0, 0, 0.48)",
+    inputPH: "#ECEDEE",
     inputBG: "rgba(255, 255, 255, 0.2)",
     inputBorder: "rgba(255, 255, 255, 0.5)",
     yellow: "#FFA500",
