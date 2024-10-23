@@ -41,7 +41,6 @@ export default function SignUpScreen() {
         }
       >
         <AuthContainer title="Login to your account" />
-        <ThemedView style={styles.inputContainer}></ThemedView>
         <Formik
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting }) => {
@@ -50,7 +49,7 @@ export default function SignUpScreen() {
           validationSchema={SignupSchema}
         >
           {({ handleChange, handleSubmit, values, errors, touched }) => (
-            <ThemedView style={{ top: -100 }}>
+            <ThemedView>
               <TextInput
                 onChangeText={handleChange("email")}
                 value={values.email}
@@ -96,12 +95,6 @@ export default function SignUpScreen() {
 }
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
-    height: 50,
-    top: -50,
-  },
   flex: {
     flex: 1,
     display: "flex",

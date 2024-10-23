@@ -41,19 +41,18 @@ export default function SignInScreen() {
         }
       >
         <AuthContainer title="Login to your account" />
-        <ThemedView style={styles.inputContainer}></ThemedView>
         <Formik
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting }) => {
             console.log(values);
             signIn();
             setSubmitting(false);
-            router.replace("/(tabs)/");
+            router.replace("/(auth)/scan-qr");
           }}
           //validationSchema={LoginSchema}
         >
           {({ handleChange, handleSubmit, values, errors, touched }) => (
-            <ThemedView style={{ top: -100 }}>
+            <ThemedView>
               <TextInput
                 onChangeText={handleChange("email")}
                 value={values.email}
@@ -86,6 +85,16 @@ export default function SignInScreen() {
                 link="Sign Up"
                 href={"/(auth)/sign-up"}
               />
+              <TextWithLink
+                text="Don't have an account ?"
+                link="Sign Up"
+                href={"/(auth)/reset-password"}
+              />
+              <TextWithLink
+                text="Don't have an account ?"
+                link="Sign Up"
+                href={"/(auth)/validate-phone"}
+              />
             </ThemedView>
           )}
         </Formik>
@@ -95,12 +104,6 @@ export default function SignInScreen() {
 }
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
-    height: 50,
-    top: -50,
-  },
   flex: {
     flex: 1,
     display: "flex",

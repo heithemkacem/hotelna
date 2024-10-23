@@ -31,7 +31,6 @@ export default function ValidatePhoneScreen() {
         }
       >
         <AuthContainer title="Validate your phone number" />
-        <ThemedView style={styles.inputContainer}></ThemedView>
         <Formik
           initialValues={{ phone: "" }}
           onSubmit={(values, { setSubmitting }) => {
@@ -42,7 +41,7 @@ export default function ValidatePhoneScreen() {
           validationSchema={ValidatePhone}
         >
           {({ handleChange, handleSubmit, values, errors, touched }) => (
-            <ThemedView style={{ top: -100 }}>
+            <ThemedView>
               <PhoneInput
                 onPhoneChange={handleChange("phone")}
                 isOtpVisible={isOtpVisible}
@@ -79,8 +78,7 @@ export default function ValidatePhoneScreen() {
                   style={[
                     {
                       opacity: !isOtpVisible ? 0.4 : 1,
-                      top: -100,
-                      padding: 5,
+                      paddingHorizontal: 20,
                     },
                   ]}
                 >
@@ -104,12 +102,6 @@ export default function ValidatePhoneScreen() {
 }
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
-    height: 50,
-    top: -50,
-  },
   flex: {
     flex: 1,
     display: "flex",

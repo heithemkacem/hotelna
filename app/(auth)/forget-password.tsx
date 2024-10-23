@@ -35,7 +35,6 @@ export default function ForgetPasswordScreen() {
         }
       >
         <AuthContainer title="Enter your email" />
-        <ThemedView style={styles.inputContainer}></ThemedView>
         <Formik
           initialValues={initialValues}
           onSubmit={(values, { setSubmitting }) => {
@@ -44,7 +43,7 @@ export default function ForgetPasswordScreen() {
           validationSchema={ForgetPasswordSchema}
         >
           {({ handleChange, handleSubmit, values, errors, touched }) => (
-            <ThemedView style={{ top: -100 }}>
+            <ThemedView>
               <TextInput
                 onChangeText={handleChange("email")}
                 value={values.email}
@@ -73,12 +72,6 @@ export default function ForgetPasswordScreen() {
 }
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
-    height: 50,
-    top: -50,
-  },
   flex: {
     flex: 1,
     display: "flex",

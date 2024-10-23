@@ -8,12 +8,14 @@ import {
   TouchableOpacity,
   useColorScheme,
   Image,
+  ActivityIndicator, // Import ActivityIndicator
 } from "react-native";
 import { Colors } from "@/constants/Colors";
 import axios from "axios";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { MaterialIcon } from "../icons/MaterialIcons";
+import Loader from "../loader/Loader";
 
 interface PhoneInputProps {
   onPhoneChange?: (phone: string) => void;
@@ -32,7 +34,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   error,
 }) => {
   const colorScheme = useColorScheme();
-  const [countryList, setCountryList] = useState([]);
+  const [countryList, setCountryList] = useState<CountryResult[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<CountryResult>({
     name: "",
     flag: "",
@@ -42,8 +44,10 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
   const [phone, setPhone] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [countryError, setCountryError] = useState(false);
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const fetchCountries = async () => {
+    setLoading(true); // Set loading to true when fetching starts
     try {
       const response = await axios.get("https://restcountries.com/v3.1/all");
       const countries = response.data.map((country: any) => ({
@@ -57,6 +61,8 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
       setCountryList(countries);
     } catch (error) {
       console.error("Error fetching countries", error);
+    } finally {
+      setLoading(false); // Set loading to false after fetching is done
     }
   };
 
@@ -184,11 +190,15 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
               Close
             </ThemedText>
           </Pressable>
-          <FlatList
-            data={countryList}
-            keyExtractor={(item: any) => item.name}
-            renderItem={renderCountryItem}
-          />
+          {loading ? ( // Show loader when fetching countries
+            <Loader />
+          ) : (
+            <FlatList
+              data={countryList}
+              keyExtractor={(item: any) => item.name}
+              renderItem={renderCountryItem}
+            />
+          )}
         </ThemedView>
       </Modal>
     </ThemedView>

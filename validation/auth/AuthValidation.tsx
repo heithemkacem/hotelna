@@ -11,7 +11,11 @@ export const ValidatePhone = () => {
     phone: yup.string().required("The phone is required"),
   });
 };
-
+export const CodeValidation = () => {
+  return yup.object().shape({
+    code: yup.string().required("The code is required"),
+  });
+};
 export const ResetPasswordSchema = () => {
   return yup.object().shape({
     password: yup

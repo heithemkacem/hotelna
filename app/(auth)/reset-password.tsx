@@ -32,7 +32,6 @@ export default function ResetPasswordScreen() {
         }
       >
         <AuthContainer title="Validate your phone number" />
-        <ThemedView style={styles.inputContainer}></ThemedView>
         <Formik
           initialValues={{ otp: "" }}
           onSubmit={(values, { setSubmitting }) => {
@@ -57,8 +56,7 @@ export default function ResetPasswordScreen() {
                   style={[
                     {
                       opacity: !isOtpVisible ? 0.4 : 1,
-                      top: -100,
-                      padding: 20,
+                      paddingHorizontal: 20,
                     },
                   ]}
                 >
@@ -91,7 +89,6 @@ export default function ResetPasswordScreen() {
               style={[
                 {
                   opacity: isOtpVisible ? 0.4 : 1,
-                  top: -100,
                   padding: 5,
                 },
               ]}
@@ -130,12 +127,6 @@ export default function ResetPasswordScreen() {
 }
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
-    height: 50,
-    top: -50,
-  },
   flex: {
     flex: 1,
     display: "flex",
