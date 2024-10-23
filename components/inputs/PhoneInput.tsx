@@ -137,7 +137,7 @@ const PhoneInput: React.FC<PhoneInputProps> = ({
             {
               backgroundColor: Colors[colorScheme ?? "dark"].inputBG,
               borderColor: Colors[colorScheme ?? "dark"].inputBorder,
-              color: Colors[colorScheme ?? "dark"].text,
+              color: Colors[colorScheme ?? "dark"].inputPH,
             },
           ]}
           placeholder="Enter Phone Number"

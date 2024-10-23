@@ -47,7 +47,7 @@ export default function SignInScreen() {
             console.log(values);
             signIn();
             setSubmitting(false);
-            router.replace("/(auth)/scan-qr");
+            router.replace("/(client)/");
           }}
           //validationSchema={LoginSchema}
         >

@@ -17,7 +17,7 @@ import { useSession } from "@/context/ctx";
 import { router } from "expo-router";
 import { FontAwesome } from "@/components/icons/FontAwesome";
 import { Colors } from "@/constants/Colors";
-import CodeScanner from "@/components/Camera/Camera";
+import CodeScanner from "@/components/camera/Camera";
 
 export default function SignInScreen() {
   const { signIn } = useSession();
@@ -60,7 +60,7 @@ export default function SignInScreen() {
                 console.log(values);
                 signIn();
                 setSubmitting(false);
-                router.replace("/(tabs)/");
+                router.replace("/(client)/");
               }}
               validationSchema={CodeValidation}
             >

@@ -1,5 +1,5 @@
 import { useContext, createContext, type PropsWithChildren } from "react";
-import { useStorageState } from "../hooks/useStorageState";
+import { useStorageState } from "./../hooks/useStorageState";
 
 const AuthContext = createContext<{
   signIn: () => void;
@@ -32,6 +32,7 @@ export function SessionProvider({ children }: PropsWithChildren) {
     <AuthContext.Provider
       value={{
         signIn: () => {
+          // Perform sign-in logic here
           setSession("xxx");
         },
         signOut: () => {

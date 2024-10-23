@@ -9,14 +9,12 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 export default function AuthLayout() {
   const colorScheme = useColorScheme();
   const { session, isLoading } = useSession();
-
-  // You can keep the splash screen open, or render a loading screen like we do here.
   if (isLoading) {
     return <Loader />;
   }
-  if (session) {
-    console.log(session);
-    return <Redirect href="/(client)/(tabs)" />;
+
+  if (!session) {
+    return <Redirect href="/(auth)/" />;
   }
   return (
     <Stack
@@ -29,10 +27,7 @@ export default function AuthLayout() {
       }}
     >
       <Stack.Screen name="index" />
-      <Stack.Screen name="sign-up" />
-      <Stack.Screen name="validate-phone" />
-      <Stack.Screen name="forget-password" />
-      <Stack.Screen name="reset-password" />
+      <Stack.Screen name="(tabs)" />
     </Stack>
   );
 }

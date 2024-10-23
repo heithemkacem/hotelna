@@ -99,7 +99,10 @@ const ErrorBesideLabelInput: React.FC<TextInputProps> = ({
       <RNTextInput
         style={[
           styles.textInput,
-          { backgroundColor: Colors[colorScheme ?? "dark"].inputBG },
+          {
+            backgroundColor: Colors[colorScheme ?? "dark"].inputBG,
+            color: Colors[colorScheme ?? "dark"].inputPH,
+          },
           inputBorderColor(),
         ]}
         placeholder={placeholder}
